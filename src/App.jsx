@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import "./App.css";
 import {recipes as original} from "./recipes";
-import background from "./christmas.jpg";
+import background from "./christmas-web.jpg";
 import Confetti from "./confetti";
 import PureModal from 'react-pure-modal';
 import 'react-pure-modal/dist/react-pure-modal.min.css';
@@ -99,7 +99,10 @@ function App() {
 			</PureModal>;
 			<div className="grid">
 				{recipes.map((recipe,day) => {
-					const isOpen = (new Date().getMonth() === 11) && (day <= (new Date().getDate() - 2));
+
+					// const isOpen = (new Date().getMonth() === 11) && (day <= (new Date().getDate() - 2));
+					const isOpen = true;
+
 					return <Tile isOpen={isOpen} recipe={recipe} day={day} key={day} onClick={(date) => {
 						if(date === -1){
 							setOff(false);
