@@ -45,6 +45,13 @@ recipes.map(r => r.ingredients).flat().forEach((ingredient, i) => {
 	ingredients[ingredient.n] += (ingredient.oz ?? 0);
 });
 
+function toFraction(amount) {
+    const whole = Math.floor(amount);
+    const fraction = amount - whole;
+    const denom = [2, 3, 4, 5, 6, 8].find(d => Math.abs(Math.round(fraction * d) / d - fraction) < 0.01);
+    const fractionString = denom ? `${Math.round(fraction * denom)}/${denom}` : "";
+    return `${whole ? whole : ""}${whole && fractionString ? " " : ""}${fractionString || "0"}`;
+}
 
 function App() {
 
@@ -90,7 +97,7 @@ function App() {
 					<div id="recipe">
 						<div>Ingredients</div>
 						{recipe.ingredients.map((i,j) => <div key={j}>{(!!(i.oz)) ? (
-							`${i.oz}oz ${i.n}`
+							`${toFraction(i.oz)}oz ${i.n}`
 						) : (
 							i.n
 						)}</div>)}
@@ -122,7 +129,7 @@ function App() {
 					{Object.keys(ingredients).sort((a,b) => ingredients[b] - ingredients[a]).map((ingredient, i) => {
 						if(ingredients[ingredient] > 0){
 							return (
-								<div key={i}>{ingredients[ingredient]}oz {ingredient}</div>
+								<div key={i}>{toFraction(ingredients[ingredient])}oz {ingredient}</div>
 							);
 						}
 						if(ingredient.match(/^(Grapefruit|Strawberry|Lemon|Lime|Mint|Cucumber|Orange|Cream)$/ig)) {
