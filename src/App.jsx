@@ -97,7 +97,7 @@ function App() {
 					<div id="recipe">
 						<div>Ingredients</div>
 						{recipe.ingredients.map((i,j) => <div key={j}>{(!!(i.oz)) ? (
-							`${toFraction(i.oz)}oz ${i.n}`
+							`${toFraction(i.oz)}oz ${i.n}${i.annotation ? ` (${i.annotation})`: ""}`
 						) : (
 							i.n
 						)}</div>)}
