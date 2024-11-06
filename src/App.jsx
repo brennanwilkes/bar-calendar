@@ -7,7 +7,7 @@ import PureModal from 'react-pure-modal';
 import 'react-pure-modal/dist/react-pure-modal.min.css';
 import ReactPlayer from 'react-player/youtube';
 
-const rand = [0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1];
+const rand = [1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0];
 let recipes = original.sort((a,b) => a.sort - b.sort);
 
 const Tile = (props) => {
@@ -49,9 +49,15 @@ function toFraction(amount) {
     const whole = Math.floor(amount);
     const fraction = amount - whole;
     const denom = [2, 3, 4, 5, 6, 8].find(d => Math.abs(Math.round(fraction * d) / d - fraction) < 0.01);
-    const fractionString = denom ? `${Math.round(fraction * denom)}/${denom}` : "";
-    return `${whole ? whole : ""}${whole && fractionString ? " " : ""}${fractionString || "0"}`;
+    const fractionString = denom && Math.round(fraction * denom) > 0 
+        ? `${Math.round(fraction * denom)}/${denom}` 
+        : "";
+
+    if (whole && fractionString) return `${whole} ${fractionString}`;
+    if (whole) return `${whole}`;
+    return fractionString || "0";
 }
+
 
 function App() {
 
@@ -123,7 +129,7 @@ function App() {
 			</div>
 			<div className="text">
 				<div>
-					Wilkes Family Advent Calendar 2022
+					Wilkes Family Advent Calendar 2024
 				</div>
 				<div>
 					{Object.keys(ingredients).sort((a,b) => ingredients[b] - ingredients[a]).map((ingredient, i) => {
@@ -132,7 +138,7 @@ function App() {
 								<div key={i}>{toFraction(ingredients[ingredient])}oz {ingredient}</div>
 							);
 						}
-						if(ingredient.match(/^(Grapefruit|Strawberry|Lemon|Lime|Mint|Cucumber|Orange|Cream)$/ig)) {
+						if(ingredient.match(/^(Grapefruit|Strawberry|Lemon|Lime|Mint|Cucumber|Orange|Cream|Vanilla Ice Cream|Salt|Egg White)$/ig)) {
 							ingredient += ` (Dec ${recipes.map((_,i) => i).filter(i => recipes[i].ingredients.some(ing => ing.n === ingredient)).map(i => i+1).join(", ")})`
 						}
 						return (
