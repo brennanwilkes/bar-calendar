@@ -80,8 +80,9 @@ export const recipes = [
 		{n:"Angostura Bitters", oz: 0 },
 	]},
 	{sort: 11, name: "The Colonial Ties", id: "YjCp9C1Qqsg", ingredients: [
-		{n:"Jamaican Rum", oz: 1, annotation: "Worthy Park 109" },
 		{n:"Rye Whisky", oz: 1 },
+		{n:"Funky Jamaican Rum", oz: 1/2, annotation: "Smith and Cross" },
+		{n:"Jamaican Rum", oz: 1/2, annotation: "Worthy Park 109" },
 		{n:"Demerara Syrup", oz: 1/4 },
 		{n:"Angostura Bitters", oz: 0 },
 		{n:"Peychauds Bitters", oz: 0 },
@@ -193,6 +194,7 @@ export const recipes = [
 		{n:"Creme de Menthe", oz: 1.5 },
 		{n:"Creme de Cacao", oz: 1.5 },
 		{n:"Fernet Branca", oz: 1.5 },
+		{n:"Cream", oz: 0 },
 		{n:"Vanilla Ice Cream", oz: 0 },
 		{n:"Salt", oz: 0 },
 	]},
