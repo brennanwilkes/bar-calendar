@@ -138,7 +138,7 @@ function App() {
 								<div key={i}>{toFraction(ingredients[ingredient])}oz {ingredient}</div>
 							);
 						}
-						if(ingredient.match(/^(Grapefruit|Strawberry|Lemon|Lime|Mint|Cucumber|Orange|Cream|Vanilla Ice Cream|Salt|Egg White)$/ig)) {
+						if(ingredient.match(/^(Grapefruit|Strawberry|Lemon|Lime|Mint|Cucumber|Orange|Cream|Vanilla Ice Cream|Salt|Egg White|Nutmeg)$/ig)) {
 							ingredient += ` (Dec ${recipes.map((_,i) => i).filter(i => recipes[i].ingredients.some(ing => ing.n === ingredient)).map(i => i+1).join(", ")})`
 						}
 						return (

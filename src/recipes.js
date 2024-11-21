@@ -106,26 +106,66 @@ export const recipes = [
 		{n:"Falernum", oz: 1 },
 		{n:"Lime Juice", oz: 1 },
 	]},
-	{sort: 15, name: "XXXXXXXXXXX", id: "XXXXXXXXXXX", ingredients: [
-		{n:"XXXXXXXXXXX", oz: 100000 },
+	{sort: 15, name: "Amaretto Sour", id: "vdL8MZX_MKA", ingredients: [
+		{n:"Bourbon", oz: 2 },
+		{n:"Amaretto", oz: 1 },
+		{n:"Lemon Juice", oz: 1 },
 	]},
-	{sort: 16, name: "XXXXXXXXXXX", id: "XXXXXXXXXXX", ingredients: [
-		{n:"XXXXXXXXXXX", oz: 100000 },
+	{sort: 16, name: "Lapu Lapu", id: "s3OWmLQVJaY", ingredients: [
+		{n:"Light Column Still Rum", oz: 1.5, annotation: "Havana Club 3yr" },
+		{n:"Jamaican Rum", oz: 1, annotation: "Worthy Park 109" },
+		{n:"151 Demerara Rum", oz: 0.5, annotation: "Lemonhart 151" },
+		{n:"Orange Juice", oz: 2 },
+		{n:"Passionfruit Syrup", oz: 1 },
+		{n:"Lime Juice", oz: 1/2 },
+		{n:"Lemon Juice", oz: 1/2 },
+		{n:"Mint", oz: 0 },
 	]},
-	{sort: 17, name: "XXXXXXXXXXX", id: "XXXXXXXXXXX", ingredients: [
-		{n:"XXXXXXXXXXX", oz: 100000 },
+	{sort: 17, name: "The Mai Kai Barrel O' Rum", id: "i7ovdT1w4yU", ingredients: [
+		{n:"Jamaican Rum", oz: 1.5, annotation: "Worthy Park 109" },
+		{n:"Jamaican Rum", oz: 1/2, annotation: "Appleton Estate" },
+		{n:"Funky Overproof Rum", oz: 1/2, annotation: "Wray and Nephew Overproof" },
+		{n:"Light Column Still Rum", oz: 1/2, annotation: "Havana Club 3yr" },
+		{n:"Passionfruit Syrup", oz: 1 },
+		{n:"Honey", oz: 1/2 },
+		{n:"Falernum", oz: 1/2 },
+		{n:"Grapefruit Juice", oz: 1.5 },
+		{n:"Orange Juice", oz: 1 },
+		{n:"Angostura Bitters", oz: 0 },
 	]},
-	{sort: 18, name: "XXXXXXXXXXX", id: "XXXXXXXXXXX", ingredients: [
-		{n:"XXXXXXXXXXX", oz: 100000 },
+	{sort: 18, name: "Nui Nui", id: "DLjXocLodV0", ingredients: [
+		{n:"Jamaican Rum", oz: 1, annotation: "Appleton Estate" },
+		{n:"Jamaican Rum", oz: 1, annotation: "Worthy Park 109" },
+		{n:"Dry Curacao", oz: 1/2 },
+		{n:"Cinnamon Syrup", oz: 1/2 },
+		{n:"Falernum", oz: 1/4 },
+		{n:"Vanilla Syrup", oz: 1/4 },
+		{n:"Lime Juice", oz: 1 },
+		{n:"Angostura Bitters", oz: 0 },
 	]},
-	{sort: 19, name: "XXXXXXXXXXX", id: "XXXXXXXXXXX", ingredients: [
-		{n:"XXXXXXXXXXX", oz: 100000 },
+	{sort: 19, name: "Remember the Maine", id: "I2_xijYpP_Y", ingredients: [
+		{n:"Rye Whisky", oz: 3/4 },
+		{n:"Bourbon", oz: 3/4 },
+		{n:"Sweet Vermouth", oz: 3/4 },
+		{n:"Cherry Heering", oz: 1/4 },
+		{n:"Absinthe", oz: 0 },
 	]},
-	{sort: 20, name: "XXXXXXXXXXX", id: "XXXXXXXXXXX", ingredients: [
-		{n:"XXXXXXXXXXX", oz: 100000 },
+	{sort: 20, name: "Penang Afrididi", id: "aQq0eLv4Emo", ingredients: [
+		{n:"Light Column Still Rum", oz: 1.5, annotation: "Havana Club 3yr" },
+		{n:"Jamaican Rum", oz: 1.5, annotation: "Appleton Estate" },
+		{n:"Passionfruit Syrup", oz: 3/4 },
+		{n:"Lime Juice", oz: 3/4 },
+		{n:"Pineapple Juice", oz: 3/4 },
+		{n:"Orange Juice", oz: 0.5 },
+		{n:"Absinthe", oz: 0 },
+		{n:"Mint", oz: 0 },
 	]},
-	{sort: 21, name: "XXXXXXXXXXX", id: "XXXXXXXXXXX", ingredients: [
-		{n:"XXXXXXXXXXX", oz: 100000 },
+	{sort: 21, name: "Pago Pago", id: "tLxrfnYs8ZI", ingredients: [
+		{n:"Jamaican Rum", oz: 2, annotation: "Appleton Estate" },
+		{n:"Yellow Chartreuse", oz: 1/2 },
+		{n:"Creme de Cacao", oz: 1/4 },
+		{n:"Pineapple Juice", oz: 3/4 },
+		{n:"Lime Juice", oz: 1/2 },
 	]},
 	{sort: 22, name: "Mai Tai", id: "DCt0I2x5xls", ingredients: [
 		{n:"Funky Jamaican Rum", oz: 1/2, annotation: "Smith and Cross" },
@@ -147,6 +187,7 @@ export const recipes = [
 		{n:"Lemon Juice", oz: 1 },
 		{n:"Peychauds Bitters", oz: 0 },
 		{n:"Egg White", oz: 0 },
+		{n:"Nutmeg", oz: 0 },
 	]},
 	{sort: 24, name: "The Grasshopper", id: "ERHGoHllsq8", ingredients: [
 		{n:"Creme de Menthe", oz: 1.5 },
