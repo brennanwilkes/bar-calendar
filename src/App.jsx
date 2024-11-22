@@ -113,8 +113,8 @@ function App() {
 			<div className="grid">
 				{recipes.map((recipe,day) => {
 
-					// const isOpen = (new Date().getMonth() === 11) && (day <= (new Date().getDate() - 2));
-					const isOpen = true;
+					const isOpen = (new Date().getMonth() === 11) && (day <= (new Date().getDate() - 2));
+					// const isOpen = true;
 
 					return <Tile isOpen={isOpen} recipe={recipe} day={day} key={day} onClick={(date) => {
 						if(date === -1){
