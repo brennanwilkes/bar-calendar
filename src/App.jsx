@@ -109,7 +109,7 @@ function App() {
 						)}</div>)}
 					</div>
 				</div>
-			</PureModal>;
+			</PureModal>
 			<div className="grid">
 				{recipes.map((recipe,day) => {
 
@@ -118,11 +118,11 @@ function App() {
 
 					return <Tile isOpen={isOpen} recipe={recipe} day={day} key={day} onClick={(date) => {
 						if(date === -1){
-							setOff(false);
+							setOff(false)
 						}
 						else{
-							setModal(date);
-							setRecipe(recipes[date]);
+							setModal(date)
+							setRecipe(recipes[date])
 						}
 					}}/>
 				})}
@@ -136,14 +136,14 @@ function App() {
 						if(ingredients[ingredient] > 0){
 							return (
 								<div key={i}>{toFraction(ingredients[ingredient])}oz {ingredient}</div>
-							);
+							)
 						}
 						if(ingredient.match(/^(Grapefruit|Strawberry|Lemon|Lime|Mint|Cucumber|Orange|Cream|Vanilla Ice Cream|Salt|Egg White|Nutmeg)$/ig)) {
 							ingredient += ` (Dec ${recipes.map((_,i) => i).filter(i => recipes[i].ingredients.some(ing => ing.n === ingredient)).map(i => i+1).join(", ")})`
 						}
 						return (
 							<div key={i}>{ingredient}</div>
-						);
+						)
 					})}
 				</div>
 			</div>
