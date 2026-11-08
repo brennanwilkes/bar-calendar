@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import "./App.css";
 import {recipes as original} from "./recipes";
 import background from "./christmas-web.jpg";
 import Confetti from "./confetti";
-import PureModal from 'react-pure-modal';
-import 'react-pure-modal/dist/react-pure-modal.min.css';
-import ReactPlayer from 'react-player/youtube';
+import ReactPlayer from 'react-player';
 
 const rand = [1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0];
 let recipes = original.sort((a,b) => a.sort - b.sort);
@@ -25,11 +23,9 @@ const Tile = (props) => {
 				}
 				setIsOpen(true);
 			}
-		}} className={`${isOpen ? "open" : "closed"} b${rand[props.day]}`}>
+		}} className={`tile ${isOpen ? "open" : "closed"} b${rand[props.day]}`}>
 			<div className="video">
-				<img style={{
-					pointerEvents: "none"
-				}} src={`https://img.youtube.com/vi/${props.recipe.id}/mqdefault.jpg`} />
+				<img alt="" src={`https://img.youtube.com/vi/${props.recipe.id}/mqdefault.jpg`} />
 			</div>
 			<div className="name">{props.recipe.name}</div>
 			<div className="day">{props.day + 1}</div>
@@ -64,6 +60,13 @@ function App() {
 	const [off, setOff] = useState(true);
 	const [modal, setModal] = useState(-1);
 	const [recipe, setRecipe] = useState(recipes[0]);
+	const dialog = useRef(null);
+
+	useEffect(() => {
+		const d = dialog.current;
+		if(modal > -1 && !d.open) d.showModal();
+		if(modal === -1 && d.open) d.close();
+	}, [modal]);
 
 	useEffect(() => {
 		if(!off){
@@ -75,41 +78,29 @@ function App() {
 
 
 	return (<>
-		<div style={{
-			width: "100vw",
-			height: "100vh",
-			postion: "absolute",
-			backgroundImage: `url(${background})`,
-			backgroundSize: "cover",
-			filter: "blur(4px)"
-		}}>
-		</div>
+		<div className="backdrop" style={{ backgroundImage: `url(${background})` }} />
 		<div className="App">
-			<PureModal
-				header="Your header"
-				replace={true}
-				isOpen={modal > -1}
-				closeButton="close"
-				closeButtonPosition="bottom"
-				width={"90vw"}
-				onClose={() => {
-					setModal(-1);
-					return true;
-				}}>
-				<div id="modalInner">
+			<dialog
+				ref={dialog}
+				className="recipe-dialog"
+				onClose={() => setModal(-1)}
+				onClick={(e) => { if(e.target === e.currentTarget) dialog.current.close(); }}>
+				{modal > -1 && <div id="modalInner">
+					<button className="close" autoFocus onClick={() => dialog.current.close()}>Close</button>
 					<div id="title">{recipe?.name}</div>
-					<div id="video"><ReactPlayer controls={true} url={`https://www.youtube.com/watch?v=${recipe.id}`} />
+					<div id="video"><ReactPlayer controls src={`https://www.youtube.com/watch?v=${recipe.id}`} width="100%" height="100%" />
 					</div>
 					<div id="recipe">
-						<div>Ingredients</div>
-						{recipe.ingredients.map((i,j) => <div key={j}>{(!!(i.oz)) ? (
-							`${toFraction(i.oz)}oz ${i.n}${i.annotation ? ` (${i.annotation})`: ""}`
-						) : (
-							i.n
-						)}</div>)}
+						<div className="label">Ingredients</div>
+						{recipe.ingredients.map((i,j) => (
+							<div className="item" key={j}>
+								<span className="qty">{i.oz ? `${toFraction(i.oz)} oz` : ""}</span>
+								<span>{i.n}{i.annotation && <span className="hint"> {i.annotation}</span>}</span>
+							</div>
+						))}
 					</div>
-				</div>
-			</PureModal>
+					</div>}
+			</dialog>
 			<div className="grid">
 				{recipes.map((recipe,day) => {
 
@@ -128,21 +119,19 @@ function App() {
 				})}
 			</div>
 			<div className="text">
-				<div>
+				<h1>
 					Wilkes Family Advent Calendar 2024
-				</div>
-				<div>
+				</h1>
+				<div className="shopping">
 					{Object.keys(ingredients).sort((a,b) => ingredients[b] - ingredients[a]).map((ingredient, i) => {
-						if(ingredients[ingredient] > 0){
-							return (
-								<div key={i}>{toFraction(ingredients[ingredient])}oz {ingredient}</div>
-							)
-						}
-						if(ingredient.match(/^(Grapefruit|Strawberry|Lemon|Lime|Mint|Cucumber|Orange|Cream|Vanilla Ice Cream|Salt|Egg White|Nutmeg)$/ig)) {
-							ingredient += ` (Dec ${recipes.map((_,i) => i).filter(i => recipes[i].ingredients.some(ing => ing.n === ingredient)).map(i => i+1).join(", ")})`
-						}
+						const oz = ingredients[ingredient];
+						const fresh = !oz && ingredient.match(/^(Grapefruit|Strawberry|Lemon|Lime|Mint|Cucumber|Orange|Cream|Vanilla Ice Cream|Salt|Egg White|Nutmeg)$/i);
+						const days = fresh && recipes.map((_,i) => i).filter(i => recipes[i].ingredients.some(ing => ing.n === ingredient)).map(i => i+1).join(", ");
 						return (
-							<div key={i}>{ingredient}</div>
+							<div className="item" key={i}>
+								<span className="qty">{oz > 0 ? `${toFraction(oz)} oz` : fresh && <span className="hint">Dec {days}</span>}</span>
+								<span>{ingredient}</span>
+							</div>
 						)
 					})}
 				</div>

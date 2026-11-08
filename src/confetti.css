@@ -12,11 +12,8 @@ input {
 .confetti-container {
   user-select: none;
   z-index: 5000;
-  width: 100vw;
-  height: 150vh;
-  position: absolute;
-  top: -25vh;
-  left: 0;
+  position: fixed;
+  inset: 0;
   pointer-events: none;
   overflow: hidden;
 }
